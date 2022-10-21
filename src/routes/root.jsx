@@ -25,7 +25,6 @@ export async function action() {
 
 export default function Root() {
 	const { contacts, q } = useLoaderData();
-	console.info('root - contacts', contacts);
 	const navigation = useNavigation();
 	const submit = useSubmit();
 
