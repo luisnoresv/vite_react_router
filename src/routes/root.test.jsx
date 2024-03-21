@@ -1,5 +1,5 @@
 import { describe, it } from 'vitest';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Root from './root';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
