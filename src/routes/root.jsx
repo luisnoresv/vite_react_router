@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
 import {
+	Form,
 	NavLink,
 	Outlet,
-	useLoaderData,
-	Form,
 	redirect,
+	useLoaderData,
 	useNavigation,
 	useSubmit,
 } from 'react-router-dom';
 
-import { getContacts, createContact } from '../contacts';
+import { createContact, getContacts } from '../contacts';
 
 export async function loader({ request }) {
 	const url = new URL(request.url);
@@ -24,8 +24,6 @@ export async function action() {
 }
 
 export default function Root() {
-	// const [value, setValue] = useState('');
-	// const inputRef = useRef(null);
 	const { contacts, q } = useLoaderData();
 	const navigation = useNavigation();
 	const submit = useSubmit();
@@ -38,27 +36,9 @@ export default function Root() {
 		navigation.location &&
 		new URLSearchParams(navigation.location.search).has('q');
 
-	// const handlerClick = () => {
-	// console.info(value);
-	// 	console.info(inputRef.current.value);
-	// };
-
-	// const disable = value.length < 6;
-
 	return (
 		<>
 			<div id='sidebar'>
-				{/* <h1>React Router Contacts</h1>
-				<input
-					type='text'
-					value={value}
-					onChange={(e) => setValue(e.currentTarget.value)}
-				/>
-				<button disabled={disable} onClick={handlerClick}>
-					Click Me
-				</button> */}
-				{/* <input type='text' ref={inputRef} />
-				<button onClick={handlerClick}>Click Me UseRef</button> */}
 				<div>
 					<Form id='search-form' role='search'>
 						<input
@@ -84,14 +64,6 @@ export default function Root() {
 					</Form>
 				</div>
 				<nav>
-					{/* <ul>
-						<li>
-							<Link href={`contacts/1`}>Your Name</Link>
-						</li>
-						<li>
-							<Link href={`contacts/2`}>Your Friend</Link>
-						</li>
-					</ul> */}
 					{contacts.length ? (
 						<ul>
 							{contacts.map((contact) => (
