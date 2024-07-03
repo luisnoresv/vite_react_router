@@ -1,4 +1,4 @@
-import { Form, useLoaderData, useFetcher } from 'react-router-dom';
+import { Form, useFetcher, useLoaderData } from 'react-router-dom';
 import { getContact, updateContact } from '../contacts';
 
 export async function loader({ params }) {
@@ -79,6 +79,7 @@ export default function Contact() {
 	);
 }
 
+// How to revalidate data by using the useFetcher hook
 function Favorite({ contact }) {
 	// yes, this is a `let` for later
 	const fetcher = useFetcher();

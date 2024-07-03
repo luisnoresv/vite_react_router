@@ -5,8 +5,6 @@ import Contact, {
 	action as contactAction,
 	loader as contactLoader,
 } from './contact';
-import { DogsDetails } from './dogs/details';
-import { DogsList } from './dogs/list';
 import EditContact, {
 	action as editAction,
 	loader as editLoader,
@@ -42,18 +40,10 @@ export const router = createBrowserRouter([
 					{
 						path: 'contacts/:contactId/destroy',
 						action: destroyAction,
-						errorElement: <div>Ooops! There was an error</div>,
+						errorElement: <ErrorPage />,
 					},
 				],
 			},
 		],
-	},
-	{
-		path: 'dogs/',
-		element: <DogsList />,
-	},
-	{
-		path: 'dogs/details',
-		element: <DogsDetails />,
 	},
 ]);
