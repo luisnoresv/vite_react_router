@@ -1,4 +1,4 @@
-import { Form, useLoaderData, redirect, useNavigate } from 'react-router-dom';
+import { Form, redirect, useLoaderData, useNavigate } from 'react-router-dom';
 import { getContact, updateContact } from '../contacts';
 
 export async function loader({ params }) {
@@ -10,11 +10,16 @@ export async function action({ request, params }) {
 	const updates = Object.fromEntries(formData);
 	await updateContact(params.contactId, updates);
 
+	/**
+	 * * to add programmatic navigation inside an action or a loader is better to use
+	 * * redirect
+	 */
 	return redirect(`/contacts/${params.contactId}`);
 }
 
 export default function EditContact() {
 	const contact = useLoaderData();
+	// to add programmatic navigation
 	const navigate = useNavigate();
 
 	return (
